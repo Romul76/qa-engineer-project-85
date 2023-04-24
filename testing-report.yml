@@ -1,0 +1,52 @@
+---
+- summary: |
+    Регистрация пользователя на сайте
+  status: pass
+
+- summary: |
+    Отображение уведомление для установки расширения
+  status: pass
+
+- summary: |
+    Регистрация с помощью GitHub
+  status: pass
+
+- summary: |
+    Проверка кнопки "Try Simple Battle"
+  status: pass
+  
+- summary: |
+    Проверка вкладки лобби
+  status: pass
+
+- summary: |
+    Проверка вкладки турниров
+  status: pass
+
+- summary: |
+    Проверка вкладки завершенных игр
+  status: pass
+
+- summary: |
+    Проверка общего чата
+  status: pass
+
+- summary: |
+    Проверка создания игры
+  status: pass
+
+- summary: |
+    Проверка просмотра таблицы лидеров
+  status: pass
+
+- summary: |
+    Проверка выбора языка программирования 
+  status: pass
+
+- summary: |
+    Проверка валидации поля email
+  status: fail
+
+- summary: |
+    Проверка валидации поля password
+  status: fail
