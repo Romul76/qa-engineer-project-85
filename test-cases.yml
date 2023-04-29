@@ -122,3 +122,182 @@
     - ""
   expected-result: |
     Отображается окно с общим чатом
+
+- summary: |
+    Проверка выбора языка программирования в созданной игре
+  requirement: |
+    Зарегистрированному пользователю доступен выбор языка программирования в созданной игре
+  prerequisites: |
+    - Пользователь зарегистрирован. Создана рандомная игра с ботом.
+  test-data: |
+    - Email = testUserGitHubMail@testmail.ru 
+    - Password = testUserPasswordGitHub
+  steps:
+    - Нажать на выпадающий список языков программирования
+    - Выбрать язык программирования
+  expected-result: |
+    Отображается базовая конструкция с синтаксисом выбранного языка программирования
+    
+- summary: |
+    Проверка создания игры с ботом
+  requirement: |
+    Зарегистрированному пользователю доступно создание игры с ботом
+  prerequisites: |
+    - Пользователь зарегистрирован. Открыта главная страница
+  test-data: |
+    - Email = testUserGitHubMail@testmail.ru 
+    - Password = testUserPasswordGitHub
+  steps:
+    - Нажать на кнопку "Create a game"
+    - Выбрать "With a bot"
+    - Нажать "Create battle"
+  expected-result: |
+    Отображается страница контеста
+    
+- summary: |
+    Проверка создания игры с другом
+  requirement: |
+    Зарегистрированному пользователю доступно создание игры с другом
+  prerequisites: |
+    - Пользователь зарегистрирован. Открыта главная страница.
+  test-data: |
+    - Email = testUserGitHubMail@testmail.ru 
+    - Password = testUserPasswordGitHub
+  steps:
+    - Нажать на кнопку "Create a game"
+    - Выбрать "With a friend"
+    - Выбрать соперника в выпадающем списке "Choose opponent"
+    - Нажать "Create Invite"
+  expected-result: |
+    Окно создания игры закрывается. Отображается счетчик над иконкой инвайтов на главной странице.
+    
+- summary: |
+    Проверка создания игры с другим пользователем
+  requirement: |
+    Зарегистрированному пользователю доступно создание игры с другими пользователями
+  prerequisites: |
+    - Пользователь зарегистрирован. Открыта главная страница.
+  test-data: |
+    - Email = testUserGitHubMail@testmail.ru 
+    - Password = testUserPasswordGitHub
+  steps:
+    - Нажать на кнопку "Create a game"
+    - Выбрать "With other users"
+    - Нажать "Create Battle"
+  expected-result: |
+    Окно создания игры закрывается. На вкладке "Lobby" отображается созданный контест.
+
+- summary: |
+    Проверка возврата в игру
+  requirement: |
+    Зарегистрированному пользователю доступен возврат в игру при переходе на главную страницу
+  prerequisites: |
+    - Пользователь зарегистрирован. Открыта главная страница
+  test-data: |
+    - Email = testUserGitHubMail@testmail.ru 
+    - Password = testUserPasswordGitHub
+  steps:
+    - Нажать на кнопку "Create a game"
+    - Выбрать "With a bot"
+    - Нажать "Create battle"
+    - Нажать "Back to Home"
+    - Нажать "Continue" на вкладке "Lobby"
+  expected-result: |
+    Отображается страница контеста. Время не остановилось, игра продолжается.
+
+- summary: |
+    Проверка отображения сообщения при проигрыше
+  requirement: |
+    Пользователю отображается сообщение о проигрыше при завершении игры по истечению времени
+  prerequisites: |
+    - Пользователь зарегистрирован. Создана рандомная игра с ботом.
+  test-data: |
+    - Email = testUserGitHubMail@testmail.ru 
+    - Password = testUserPasswordGitHub
+  steps:
+    - Дождаться окончания таймера
+  expected-result: |
+    В правом углу отображается сообщение "Time is up. There are no winners in the game"
+    
+- summary: |
+    Проверка отображения уведомления при нажатии на кнопку "Give Up"
+  requirement: |
+    Пользователю отображается уведомление о проигрыше при завершении игры по нажатию кнопки "Give Up"
+  prerequisites: |
+    - Пользователь зарегистрирован. Создана рандомная игра с ботом.
+  test-data: |
+    - Email = testUserGitHubMail@testmail.ru 
+    - Password = testUserPasswordGitHub
+  steps:
+    - Нажать кнопку "Give Up"
+    - Нажать кнопку "Give Up"
+  expected-result: |
+    Отображается уведолмение с текстом "If you read this you've lost the game" и кнопкой "I'll be back"
+    
+- summary: |
+    Проверка отображения уведомления при нажатии на кнопку "Check solution"
+  requirement: |
+    Пользователю отображается уведомление о победе по нажатию кнопки "Check solution"
+  prerequisites: |
+    - Пользователь зарегистрирован. Создана рандомная игра с ботом.
+  test-data: |
+    - Email = testUserGitHubMail@testmail.ru 
+    - Password = testUserPasswordGitHub
+  steps:
+    - Решить поставленную задачу
+    - Нажать кнопку "Check solution"
+  expected-result: |
+    Отображается уведолмение с текстом "Woohoo, you're Champion!!!!!" и кнопкой "Thanks"
+    
+- summary: |
+    Проверка оторажения кнопок "Sign In" и "Sign Up"
+  requirement: |
+    Кнопки "Sign Up" и "Sign In" на всех страницах отображаются зеленого цвета
+  prerequisites: |
+    - Открыта главная страница для незарегистрированного пользователя
+  test-data: |
+    - ""
+  steps:
+    - Нажать кнопку "Try Simple Battle"
+  expected-result: |
+    - Кнопки "Sign In" и "Sign Up" отображаются серого цвета
+    
+- summary: |
+    Проверка валидации поля email
+  requirement: |
+    Доступна возможность регистрации на сайте
+  prerequisites: |
+    Открыта главная страница для незарегистрированного пользователя
+  test-data: |
+    - Nickname = testUserHexlet
+    - невалидный Email = asd@asd.com
+    - Password = qwerty
+  steps:
+    - Нажать на кнопку "Sign up"
+    - Ввести Nickname
+    - Ввести невалидный Email
+    - Ввести Password
+    - Ввести Password
+    - Нажать на кнопку "Submit"
+  expected-result: |
+    - Отображается уведомление, что нужно использовать только существующий адрес электроной почты. Нельзя использовать временную почту.
+    
+- summary: |
+    Проверка валидации поля password
+  requirement: |
+    Доступна возможность регистрации на сайте
+  prerequisites: |
+    Открыта главная страница для незарегистрированного пользователя
+  test-data: |
+    - Nickname = testUserHexlet
+    - Email = asd@asd.com
+    - Password = asd
+  steps:
+    - Нажать на кнопку "Sign up"
+    - Ввести Nickname
+    - Ввести Email
+    - Ввести невалидный Password
+    - Ввести невалидный Password
+    - Нажать на кнопку "Submit"
+  expected-result: |
+    - Отображается уведомление, что нужно использовать надежный пароль.
