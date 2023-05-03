@@ -4,7 +4,7 @@
   requirement: |
     Доступна возможность регистрации на сайте
   prerequisites: |
-    Открыта главная страница для незарегистрированного пользователя
+    Открыта главная страница для незарегистрированного пользователя https://codebattle.hexlet.io/. Отображаются кнопки "Sign In" и "Sign Up"
   test-data: |
     - Nickname = testUserHexlet
     - Email = eugeqa@mailto.plus
@@ -17,7 +17,7 @@
     - Ввести Password
     - Нажать на кнопку "Submit"
   expected-result: |
-    - Происходит редирект на галавную страницу для зарегистрированного пользователя
+    - Происходит редирект на галавную страницу для зарегистрированного пользователя https://codebattle.hexlet.io/#lobby
     - Корректно отображается Nickname пользователя в правом верхнем углу     
 
 - summary: |
@@ -25,7 +25,7 @@
   requirement: |
     Отображается уведомление для установки расширения в браузер Google Chrome
   prerequisites: |
-    - Браузер Google Chrome. Открыта главная страница для незарегистрированного пользователя 
+    - Браузер Google Chrome. Открыта главная страница для незарегистрированного пользователя https://codebattle.hexlet.io/. Отображаются кнопки "Sign In" и "Sign Up"
   test-data: |
     - ""
   steps:
@@ -39,7 +39,7 @@
   requirement: |
     Доступна возможность зарегистрироваться с помощью GitHub
   prerequisites: |
-    - У пользователя существует аккаунт GitHub. Открыта страница регистрации
+    - У пользователя существует аккаунт GitHub. Открыта страница регистрации https://codebattle.hexlet.io/users/new?locale=en&next=%2F
   test-data: |
     - Email = testUserGitHubMail@testmail.ru 
     - Password = testUserPasswordGitHub
@@ -51,7 +51,7 @@
     - Нажать на кнопку "Sign in"
     - Нажать на кнопку "Authorize vtm9"
   expected-result: |
-    - Происходит редирект на главную страницу "https://codebattle.hexlet.io"
+    - Происходит редирект на главную страницу https://codebattle.hexlet.io/#lobby
     - Отображается уведомление с текстом "Successfully authenticated"
     - В правом верхнем углу отображается Nickname пользователя GitHub
     - У профиля установлена аватарка с профиля GitHub   
@@ -61,7 +61,7 @@
   requirement: |
     Незарегистрированный пользователь может опробовать платформу по кнопке "Try Simple Battle" на главной странице
   prerequisites: |
-    - Открыта главная страница для незарегистрированного пользователя
+    - Открыта главная страница для незарегистрированного пользователя https://codebattle.hexlet.io/. Отображается кнопка "Try Simple Battle"
   test-data: |
     - ""
   steps:
@@ -75,9 +75,10 @@
   requirement: |
     Зарегистрированному пользователю доступен просмотр лобби на вкладки "Lobby"
   prerequisites: |
-    - Пользователь зарегистрирован. Открыта главная страницв
+    - Пользователь зарегистрирован. Открыта главная страница https://codebattle.hexlet.io/#lobby
   test-data: |
-    - ""
+    - Email = eugeqa@mailto.plus
+    - Password = qwerty
   steps:
     - ""
   expected-result: |
@@ -89,35 +90,38 @@
   requirement: |
     Зарегистрированному пользователю доступен просмотр турниров на вкладке "Tournaments"
   prerequisites: |
-    - Пользователь зарегистрирован. Открыта главная страницв
+    - Пользователь зарегистрирован. Открыта главная страница https://codebattle.hexlet.io/#lobby
   test-data: |
-    - ""
+    - Email = eugeqa@mailto.plus
+    - Password = qwerty
   steps:
     - Нажать на вкладку "Tournaments"
   expected-result: |
-    Отображается список турниров
+    Отображается список турниров. Url страницы меняется на https://codebattle.hexlet.io/#tournaments
 
 - summary: |
     Проверка просмотра завершенных игр
   requirement: |
     Зарегистрированному пользователю доступен просмотр завершенных игр на вкладке "Completed games"
   prerequisites: |
-    - Пользователь зарегистрирован. Открыта главная страницв
+    - Пользователь зарегистрирован. Открыта главная страница https://codebattle.hexlet.io/#lobby
   test-data: |
-    - ""
+    - Email = eugeqa@mailto.plus
+    - Password = qwerty
   steps:
     - Нажать на вкладку "Completed games"
   expected-result: |
-    Отображается список завершенных игр
+    Отображается список завершенных игр. Url страницы меняется на https://codebattle.hexlet.io/#completedGames
     
 - summary: |
     Проверка отображения общего чата
   requirement: |
     Зарегистрированному пользователю доступен общий чат
   prerequisites: |
-    - Пользователь зарегистрирован. Открыта главная страница
+    - Пользователь зарегистрирован. Открыта главная страница https://codebattle.hexlet.io/#lobby
   test-data: |
-    - ""
+    - Email = eugeqa@mailto.plus
+    - Password = qwerty
   steps:
     - ""
   expected-result: |
@@ -128,45 +132,52 @@
   requirement: |
     Зарегистрированному пользователю доступен выбор языка программирования в созданной игре
   prerequisites: |
-    - Пользователь зарегистрирован. Создана рандомная игра с ботом.
+    - Пользователь зарегистрирован. Открыта главная страница https://codebattle.hexlet.io/#lobby. Отображается кнопка "Create a Game".
   test-data: |
-    - Email = testUserGitHubMail@testmail.ru 
-    - Password = testUserPasswordGitHub
+    - Email = eugeqa@mailto.plus
+    - Password = qwerty
   steps:
+    - Нажать на кнопку "Create a Game"
+    - Выбрать "With a bot" у параметра "Game Type"
+    - Выбрать "string_format" у параметра "Choose task by name or tags"
+    - Остальные параметры оставить без изменения
+    - Нажать кнопку "Create Battle"
     - Нажать на выпадающий список языков программирования
-    - Выбрать язык программирования
+    - Выбрать язык программирования Java
   expected-result: |
-    Отображается базовая конструкция с синтаксисом выбранного языка программирования
+    Отображается базовая конструкция в соответствии с синтаксисом языка программирования Java
     
 - summary: |
     Проверка создания игры с ботом
   requirement: |
     Зарегистрированному пользователю доступно создание игры с ботом
   prerequisites: |
-    - Пользователь зарегистрирован. Открыта главная страница
+    - Пользователь зарегистрирован. Открыта главная страница https://codebattle.hexlet.io/#lobby. Отображается кнопка "Create a Game".
   test-data: |
-    - Email = testUserGitHubMail@testmail.ru 
-    - Password = testUserPasswordGitHub
+    - Email = eugeqa@mailto.plus
+    - Password = qwerty
   steps:
     - Нажать на кнопку "Create a game"
     - Выбрать "With a bot"
+    - Остальные параметры оставить без изменения
     - Нажать "Create battle"
   expected-result: |
-    Отображается страница контеста
+    Отображается страница контеста с описанием задачи, редактором кода. Таймер запущен, началась игра
     
 - summary: |
     Проверка создания игры с другом
   requirement: |
     Зарегистрированному пользователю доступно создание игры с другом
   prerequisites: |
-    - Пользователь зарегистрирован. Открыта главная страница.
+    - Пользователь зарегистрирован. Открыта главная страница https://codebattle.hexlet.io/#lobby. Отображается кнопка "Create a Game".
   test-data: |
-    - Email = testUserGitHubMail@testmail.ru 
-    - Password = testUserPasswordGitHub
+    - Email = eugeqa@mailto.plus
+    - Password = qwerty
   steps:
     - Нажать на кнопку "Create a game"
     - Выбрать "With a friend"
     - Выбрать соперника в выпадающем списке "Choose opponent"
+    - Остальные параметры оставить без изменения
     - Нажать "Create Invite"
   expected-result: |
     Окно создания игры закрывается. Отображается счетчик над иконкой инвайтов на главной странице.
@@ -176,13 +187,14 @@
   requirement: |
     Зарегистрированному пользователю доступно создание игры с другими пользователями
   prerequisites: |
-    - Пользователь зарегистрирован. Открыта главная страница.
+    - Пользователь зарегистрирован. Открыта главная страница https://codebattle.hexlet.io/#lobby. Отображается кнопка "Create a Game".
   test-data: |
-    - Email = testUserGitHubMail@testmail.ru 
-    - Password = testUserPasswordGitHub
+    - Email = eugeqa@mailto.plus
+    - Password = qwerty
   steps:
     - Нажать на кнопку "Create a game"
     - Выбрать "With other users"
+    - Остальные параметры оставить без изменения
     - Нажать "Create Battle"
   expected-result: |
     Окно создания игры закрывается. На вкладке "Lobby" отображается созданный контест.
@@ -192,13 +204,14 @@
   requirement: |
     Зарегистрированному пользователю доступен возврат в игру при переходе на главную страницу
   prerequisites: |
-    - Пользователь зарегистрирован. Открыта главная страница
+    - Пользователь зарегистрирован. Открыта главная страница https://codebattle.hexlet.io/#lobby. Отображается кнопка "Create a Game".
   test-data: |
-    - Email = testUserGitHubMail@testmail.ru 
-    - Password = testUserPasswordGitHub
+    - Email = eugeqa@mailto.plus
+    - Password = qwerty
   steps:
     - Нажать на кнопку "Create a game"
     - Выбрать "With a bot"
+    - Остальные параметры оставить без изменения
     - Нажать "Create battle"
     - Нажать "Back to Home"
     - Нажать "Continue" на вкладке "Lobby"
@@ -210,11 +223,15 @@
   requirement: |
     Пользователю отображается сообщение о проигрыше при завершении игры по истечению времени
   prerequisites: |
-    - Пользователь зарегистрирован. Создана рандомная игра с ботом.
+    - Пользователь зарегистрирован. Открыта главная страница https://codebattle.hexlet.io/#lobby. Отображается кнопка "Create a Game".
   test-data: |
-    - Email = testUserGitHubMail@testmail.ru 
-    - Password = testUserPasswordGitHub
+    - Email = eugeqa@mailto.plus
+    - Password = qwerty
   steps:
+    - Нажать на кнопку "Create a game"
+    - Выбрать "With a bot"
+    - Остальные параметры оставить без изменения
+    - Нажать "Create battle"
     - Дождаться окончания таймера
   expected-result: |
     В правом углу отображается сообщение "Time is up. There are no winners in the game"
@@ -224,11 +241,15 @@
   requirement: |
     Пользователю отображается уведомление о проигрыше при завершении игры по нажатию кнопки "Give Up"
   prerequisites: |
-    - Пользователь зарегистрирован. Создана рандомная игра с ботом.
+    - Пользователь зарегистрирован. Открыта главная страница https://codebattle.hexlet.io/#lobby. Отображается кнопка "Create a Game".
   test-data: |
-    - Email = testUserGitHubMail@testmail.ru 
-    - Password = testUserPasswordGitHub
+    - Email = eugeqa@mailto.plus
+    - Password = qwerty
   steps:
+    - Нажать на кнопку "Create a game"
+    - Выбрать "With a bot"
+    - Остальные параметры оставить без изменения
+    - Нажать "Create battle"
     - Нажать кнопку "Give Up"
     - Нажать кнопку "Give Up"
   expected-result: |
@@ -239,12 +260,19 @@
   requirement: |
     Пользователю отображается уведомление о победе по нажатию кнопки "Check solution"
   prerequisites: |
-    - Пользователь зарегистрирован. Создана рандомная игра с ботом.
+    - Пользователь зарегистрирован. Открыта главная страница https://codebattle.hexlet.io/#lobby. Отображается кнопка "Create a Game".
   test-data: |
-    - Email = testUserGitHubMail@testmail.ru 
-    - Password = testUserPasswordGitHub
+    - Email = eugeqa@mailto.plus
+    - Password = qwerty
+    - Язык программирования JavaScript
+    - Решение задачи = var strNum = num + ''; while (strNum.length < 5) { strNum = '0' + strNum; }; return "Value is " + strNum;
   steps:
-    - Решить поставленную задачу
+    - Нажать на кнопку "Create a game"
+    - Выбрать "With a bot"
+    - Выбрать "string_format" у параметра "Choose task by name or tags"
+    - Остальные параметры оставить без изменения
+    - Нажать "Create battle"
+    - Решить поставленную задачу "Given a number as input, return a string "Value is num", where num is the given number with zeros added to the beginning so that there are 5 digits in total."
     - Нажать кнопку "Check solution"
   expected-result: |
     Отображается уведолмение с текстом "Woohoo, you're Champion!!!!!" и кнопкой "Thanks"
@@ -254,20 +282,20 @@
   requirement: |
     Кнопки "Sign Up" и "Sign In" на всех страницах отображаются зеленого цвета
   prerequisites: |
-    - Открыта главная страница для незарегистрированного пользователя
+    - Открыта главная страница для незарегистрированного пользователя https://codebattle.hexlet.io/. Отображаются кнопки "Sign In" и "Sign Up". Отображается кнопка "Try Simple Battle"
   test-data: |
     - ""
   steps:
     - Нажать кнопку "Try Simple Battle"
   expected-result: |
-    - Кнопки "Sign In" и "Sign Up" отображаются серого цвета
+    - Кнопки "Sign In" и "Sign Up" отображаются зеленого цвета
     
 - summary: |
     Проверка валидации поля email
   requirement: |
     Доступна возможность регистрации на сайте
   prerequisites: |
-    Открыта главная страница для незарегистрированного пользователя
+    Открыта главная страница для незарегистрированного пользователя https://codebattle.hexlet.io/. Отображается кнопка "Sign Up"
   test-data: |
     - Nickname = testUserHexlet
     - невалидный Email = asd@asd.com
@@ -278,20 +306,20 @@
     - Ввести невалидный Email
     - Ввести Password
     - Ввести Password
-    - Нажать на кнопку "Submit"
+    - Нажать на кнопку "Submit"Отображаются кнопки "Sign In" и "Sign Up"
   expected-result: |
-    - Отображается уведомление, что нужно использовать только существующий адрес электроной почты. Нельзя использовать временную почту.
+    - Отображается уведомление, что необходимо использовать только существующий адрес электроной почты. Нельзя использовать временную почту.
     
 - summary: |
     Проверка валидации поля password
   requirement: |
     Доступна возможность регистрации на сайте
   prerequisites: |
-    Открыта главная страница для незарегистрированного пользователя
+    Открыта главная страница для незарегистрированного пользователя https://codebattle.hexlet.io/. Отображается кнопка "Sign Up"
   test-data: |
     - Nickname = testUserHexlet
     - Email = asd@asd.com
-    - Password = asd
+    - невалидный Password = asd
   steps:
     - Нажать на кнопку "Sign up"
     - Ввести Nickname
@@ -300,4 +328,4 @@
     - Ввести невалидный Password
     - Нажать на кнопку "Submit"
   expected-result: |
-    - Отображается уведомление, что нужно использовать надежный пароль.
+    - Отображается уведомление, что необходимо использовать надежный пароль.
